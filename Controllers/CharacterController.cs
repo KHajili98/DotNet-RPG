@@ -1,4 +1,5 @@
 ﻿using DotNet_RPG.Models;
+using DotNet_RPG.Services.CharacterService;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,31 +13,32 @@ namespace DotNet_RPG.Controllers
     [ApiController]
     public class CharacterController : ControllerBase
     {
-       // private static Character knigh = new Character();
-        private static List<Character> characters = new List<Character> { 
-        new Character(),
-        new Character{Id=1,Name ="filan"}
-        };
+      
+        private readonly ICharacterService _characterService;
+
+        public CharacterController (ICharacterService characterService)
+        {
+            _characterService = characterService;
+        }
 
 
         [HttpGet("GetAll")]
         public IActionResult Get()
         {
-            return Ok(characters);
+            return Ok(_characterService.GetAllCharacter());
         }
 
 
         [HttpGet("{id}")]
         public IActionResult GetSingle(int id)
         {
-            return Ok(characters.FirstOrDefault(c=> c.Id==id));
+            return Ok(_characterService.GetCharacterById(id));
         }
 
 
         public  IActionResult AddCharacter (Character newCharacter)
         {
-            characters.Add(newCharacter);
-            return Ok(characters);
+            return Ok(_characterService.AddCharacter(newCharacter));
         }
     }
 }
