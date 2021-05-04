@@ -12,11 +12,24 @@ namespace DotNet_RPG.Controllers
     [ApiController]
     public class CharacterController : ControllerBase
     {
-        private static Character knigh = new Character();
+       // private static Character knigh = new Character();
+        private static List<Character> characters = new List<Character> { 
+        new Character(),
+        new Character{Id=1,Name ="filan"}
+        };
 
+
+        [HttpGet("GetAll")]
         public IActionResult Get()
         {
-            return Ok(knigh);
+            return Ok(characters);
+        }
+
+
+        [HttpGet("{id}")]
+        public IActionResult GetSingle(int id)
+        {
+            return Ok(characters.FirstOrDefault(c=> c.Id==id));
         }
     }
 }
