@@ -1,6 +1,7 @@
 ﻿using DotNet_RPG.Dtos.Character;
 using DotNet_RPG.Models;
 using DotNet_RPG.Services.CharacterService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,8 +11,9 @@ using System.Threading.Tasks;
 
 namespace DotNet_RPG.Controllers
 {
-    [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
+    [Route("api/[controller]")]
     public class CharacterController : ControllerBase
     {
       
@@ -22,7 +24,7 @@ namespace DotNet_RPG.Controllers
             _characterService = characterService;
         }
 
-
+        [AllowAnonymous]
         [HttpGet("GetAll")]
         public async Task<IActionResult> Get()
         {
