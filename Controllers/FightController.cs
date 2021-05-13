@@ -1,4 +1,5 @@
-﻿using DotNet_RPG.Services.FightService;
+﻿using DotNet_RPG.Dtos.Fight;
+using DotNet_RPG.Services.FightService;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -19,6 +20,12 @@ namespace DotNet_RPG.Controllers
             _fightService = fightService;
         }
 
+
+        [HttpPost("weapon")]
+        public async Task<IActionResult> WeaponAttack(WeaponAttackDto request)
+        {
+            return Ok(await _fightService.WeaponAttack(request));
+        }
 
     }
 }
