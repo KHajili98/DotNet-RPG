@@ -19,6 +19,7 @@ using System.Text;
 using Microsoft.AspNetCore.Http;
 using DotNet_RPG.Services.WeaponService;
 using DotNet_RPG.Services.CharacterSkillService;
+using DotNet_RPG.Services.FightService;
 
 namespace DotNet_RPG
 {
@@ -59,6 +60,7 @@ namespace DotNet_RPG
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IWeaponService, WeaponService>();
             services.AddScoped<ICharacterSkillService, CharacterSkillService>();
+            services.AddScoped<IFightService, FightService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
