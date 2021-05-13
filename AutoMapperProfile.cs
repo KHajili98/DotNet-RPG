@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DotNet_RPG.Dtos.Character;
+using DotNet_RPG.Dtos.Weapon;
 using DotNet_RPG.Models;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace DotNet_RPG
         {
             CreateMap<Character, GetCharacterDto>();
             CreateMap<AddCharacterDto, Character>();
+            CreateMap<Weapon, GetWeaponDto>();
             
         }
     }

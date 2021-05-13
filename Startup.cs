@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Http;
+using DotNet_RPG.Services.WeaponService;
 
 namespace DotNet_RPG
 {
@@ -55,7 +56,7 @@ namespace DotNet_RPG
                 });
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
+            services.AddScoped<IWeaponService, WeaponService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
