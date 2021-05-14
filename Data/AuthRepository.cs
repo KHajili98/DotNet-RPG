@@ -62,7 +62,7 @@ namespace DotNet_RPG.Data
             }
 
 
-            CreatePasswordHash(password, out byte[] passwordHash, out byte[] passwordSalt);
+            Utility.CreatePasswordHash(password, out byte[] passwordHash, out byte[] passwordSalt);
 
             user.PaasswordHash = passwordHash;
             user.PaasswordSalt = passwordSalt;
@@ -90,14 +90,7 @@ namespace DotNet_RPG.Data
 
 
 
-        private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
-        {
-            using (var hmac = new System.Security.Cryptography.HMACSHA512())
-            {
-                passwordSalt = hmac.Key;
-                passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-            }
-        }
+     
 
 
 
